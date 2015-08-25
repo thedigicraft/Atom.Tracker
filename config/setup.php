@@ -7,6 +7,7 @@ date_default_timezone_set('America/Fort_Wayne');
 
 # Empty timestamp for comparison:
 $empty = '0000-00-00 00:00:00';
+define('E', '0000-00-00 00:00:00');
 
 # Load functions:
 include('config/functions.php');

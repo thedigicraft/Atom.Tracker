@@ -18,6 +18,7 @@
               
             }else{
               $('#log').prepend(result);
+              $('#task').val('');
             }
             
           }
@@ -38,6 +39,7 @@
                
             }else{
               row.remove();
+              $('#tally').load(url+'tracker.php?mode=tally');
             }
           }
       });     
@@ -54,7 +56,9 @@
             if(result == 2){
                
             }else{
-              btn.remove();
+            	$('#log').html(result);
+            	$('#tally').load(url+'tracker.php?mode=tally');
+              
             }
           }
       });     

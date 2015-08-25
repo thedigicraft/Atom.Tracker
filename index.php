@@ -7,7 +7,7 @@
   <header>
     
     <span class="pull-right">
-      <strong>Total Hours:</strong> <?=tally($dbc)?>
+      <strong>Total Hours:</strong> <span id="tally"><?=tally($dbc)?></span>
     </span>
     
   </header>
@@ -16,7 +16,7 @@
       <div class="form-group">
         <div class="col-xs-10">
           <label>New Entry</label>
-          <input class="form-control" name="task"> 
+          <input id="task" class="form-control" name="task"> 
         </div><!-- END col -->   
         <div class="col-xs-2">
           <button type="submit" name="submit" class="btn btn-block btn-success"><?=i('play')?></a> 

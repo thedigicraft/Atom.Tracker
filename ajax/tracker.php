@@ -30,6 +30,12 @@ if(isset($_GET['mode'])) {
     case 'end':     
       $log=data_log($dbc, $_GET['log']);
       update_log($dbc, $log['id'], $_GET['mode']);
+      
+    break;
+		
+		case 'tally':     
+      echo tally($dbc);
+      
     break;
     
     case 'delete':     

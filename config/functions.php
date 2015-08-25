@@ -83,7 +83,7 @@ function build_rows($dbc){
 <?}}
 function new_log($dbc, $task){
   $d['now'] = date('Y-m-d H:i:s');
-  $d['task'] = $task;
+  $d['task'] = mysqli_real_escape_string($dbc, $task);
   $q = "INSERT INTO log (task,date_start) VALUES ('$d[task]','$d[now]')";
   $r = mysqli_query($dbc, $q);
   if($r){echo build_row($dbc, $d);}else{echo 2;}  

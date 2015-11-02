@@ -1,76 +1,84 @@
-<?include('config/setup.php')?>
-<?include('template/header.php')?>
+<?include('functions.php')?>
 
+<!DOCTYPE html>
+<html lang="en">
+	
+  <head>
+  	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="container-fluid">
-  
-  <header>
-    
-    <span class="pull-right">
-      <strong>Total Hours:</strong> <span id="tally"><?=tally($dbc)?></span>
-    </span>
-    
-  </header>
-  <div class="row">
-    <form id="form-new" method="get">
-      <div class="form-group">
-        <div class="col-xs-10">
-          <label>New Entry</label>
-          <input id="task" class="form-control" name="task"> 
-        </div><!-- END col -->   
-        <div class="col-xs-2">
-          <button type="submit" name="submit" class="btn btn-block btn-success"><?=i('play')?></a> 
-        </div><!-- END col -->
-      </div><!-- END form-group -->
-    </form>     
-  </div><!-- END row -->
-  <hr>  
+    <title>Atom.Tracker</title>
 
-  <table class="table table-bordered table-stripped">
-    <thead>
-      <tr>
-        <th>Task</th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Hours</th>
-        <th colspan="2">Controls</th>
-      </tr>   
-    </thead>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/yeti/bootstrap.css">
     
-    <tbody id="log">
+    <!-- Font Awesome 4.4.0 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <?
-    $q = "SELECT * FROM log WHERE status = 1 ORDER BY date_entered DESC";
-    $r = mysqli_query($dbc, $q);
-    
-    if(mysqli_num_rows($r) >= 1){
-    while($data=mysqli_fetch_assoc($r)){?>
-    
-      <tr>
-        <td><?=$data['task']?></td>
-        <td><?=date_nice($data['date_start'])?></td>
-        <td><?=($data['date_end'] != $empty)?date_nice($data['date_end']):''?></td>
-        <td>
-          <?if($data['date_start'] != $empty && $data['date_end'] != $empty){?>
-          <?=get_time($data['date_start'], $data['date_end'])?>
-          <?}else{?>
-            0
-          <?}?>
-        </td>
-        <td class="btn-cell">
-          <?if($data['date_end'] == $empty){?>
-            <button data-id="<?=$data['id']?>" class="btn btn-block btn-primary btn-stop"><?=i('stop')?></a>
-          <?}?>
-        </td>
-        <td class="btn-cell">
-          <button data-id="<?=$data['id']?>" class="btn btn-block btn-danger btn-delete"><?=i('times')?></button>
-        </td>
-      </tr>  
+    <style>
+    	*:disabled {
+    		background-color:#cccccc !important;
+    		border:none !important;
+    	}
+    	.btn-cell{width:61px;}
+    </style>
+
+  </head>
+
+  <body>
+
+		<div class="container-fluid">
+		  
+		  <header class="row">
+		  	<div class="col-xs-8">
+		  		<small><a data-mode="restore" id="btn-swap" href="#" class="">Enter <span>Restore</span> Mode</a></small>
+		  	</div><!-- END col --> 
+		    <div class="col-xs-4 text-right">
+			      <strong>Total Hours:</strong> <span id="tally"></span>
+		    </div>
+		  </header>
+		  
+		  <div class="row">
+		    <form id="form-new" method="get">
+		      <div class="form-group">
+		        <div class="col-xs-10">
+		          <input id="task" class="form-control" name="task" placeholder="Enter new task name..."> 
+		        </div><!-- END col -->   
+		        <div class="col-xs-2">
+		          <button type="submit" name="submit" class="btn btn-block btn-success"><?=i('play')?></button> 
+		        </div><!-- END col -->
+		      </div><!-- END form-group -->
+		    </form>     
+		  </div><!-- END row -->
+		  
+		  <hr>
+		  
+		  <table class="table table-bordered table-stripped">
+		    
+		    <thead>
+		      <tr>
+		        <th>Task</th>
+		        <th>Start</th>
+		        <th>End</th>
+		        <th>Time</th>
+		        <th colspan="2">Controls</th>
+		      </tr>   
+		    </thead>
+		    
+		    <tbody id="log"></tbody>
+		    
+		  </table>
+		  
+		</div><!-- END container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- App JS -->
+    <script src="atom.tracker.js"></script>
       
-    <?}}else{echo mysqli_error($dbc);}?>
-
-    </tbody>
-  </table>
-</div><!-- END container -->
-
-<?include('template/footer.php')?> 
+  </body>
+</html>

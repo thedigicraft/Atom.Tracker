@@ -1,6 +1,9 @@
 # Atom.Tracker
 Simple time tracker web application for tasks. Stores the tasks in a simple json file.  Great tool for freelancers to log their time. [Try it yourself with the demo!](http://alanquandt.com/plugins/Atom.Tracker/)
 
+## Video Series
+After creating this project, I created a video tutorial series that walks you through building this project from start to finish. Check out the video series here! [Learn AJAX with jQuery and PHP](https://www.youtube.com/playlist?list=PLAkMqlQoeMeggmlTJn8QLzOTohUYpHzGa)
+
 ##### Notice
 **You _need_ ```short_open_tags=On``` in php.ini**
 

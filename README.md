@@ -4,7 +4,7 @@ Simple time tracker web application for tasks. Stores the tasks in a simple json
 ## Video Series
 After creating this project, I created a video tutorial series that walks you through building this project from start to finish. Check out the video series here! [Learn AJAX with jQuery and PHP](https://www.youtube.com/playlist?list=PLAkMqlQoeMeggmlTJn8QLzOTohUYpHzGa)
 
-<a target="_blank" href="https://www.youtube.com/playlist?list=PLAkMqlQoeMeggmlTJn8QLzOTohUYpHzGa"><img src="http://alanquandt.com/plugins/Atom.Tracker/cover.jpg"></a>
+<a target="_blank" href="https://www.youtube.com/playlist?list=PLAkMqlQoeMeggmlTJn8QLzOTohUYpHzGa"><img src="http://alanquandt.com/plugins/Atom.Tracker/cover-git.jpg"></a>
 
 ##### Notice
 **You _need_ ```short_open_tags=On``` in php.ini**
